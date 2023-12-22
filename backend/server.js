@@ -22,25 +22,25 @@ db.connect((err) => {
   }
 });
 
-app.get('/students', (req, res) => {
-  db.query('SELECT * FROM students', (err, results) => {
+app.get('/patients', (req, res) => {
+  db.query('SELECT * FROM patients', (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ students: results });
+    res.json({ patients: results });
   });
 });
 
-app.post('/students', (req, res) => {
+app.post('/patients', (req, res) => {
   const { name, rollNumber } = req.body;
-  const sql = 'INSERT INTO students (name, roll_number) VALUES (?, ?)';
+  const sql = 'INSERT INTO patients (name, patient_number) VALUES (?, ?)';
   db.query(sql, [name, rollNumber], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ message: 'Student added successfully', studentId: result.insertId });
+    res.json({ message: 'Patient added successfully', studentId: result.insertId });
   });
 });
 
