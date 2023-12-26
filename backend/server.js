@@ -40,7 +40,7 @@ app.post('/patients', (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ message: 'Patient added successfully', studentId: result.insertId });
+    res.json({ message: 'Patient added successfully', patientsId: result.insertId });
   });
 });
 
