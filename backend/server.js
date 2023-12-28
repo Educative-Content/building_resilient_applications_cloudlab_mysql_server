@@ -33,9 +33,9 @@ app.get('/patients', (req, res) => {
 });
 
 app.post('/patients', (req, res) => {
-  const { name, rollNumber } = req.body;
+  const { name, patientNumber } = req.body;
   const sql = 'INSERT INTO patients (name, patient_number) VALUES (?, ?)';
-  db.query(sql, [name, rollNumber], (err, result) => {
+  db.query(sql, [name, patientNumber], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
